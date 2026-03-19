@@ -82,24 +82,33 @@ The codebase is hardened with automated unit tests to ensure reliability:
 ### Prerequisites
 * **Node.js** v20.14.0 or higher.
 * **Gemini API Key** (Google AI Studio).
+  
+### **Installation & Setup**
+Gemini said
+Got it! You're looking for that clean, professional Markdown structure where the headings (###) and code blocks (```bash) are properly isolated so GitHub renders them perfectly with "copy" buttons.
+
+When you bunch them together without line breaks, GitHub’s parser can get confused and fail to render the code blocks.
+
+Here is the exact raw Markdown you should paste into your README.md:
+
 🚀 Installation & Setup
-Follow these steps to get the Skill-Bridge Navigator running on your local machine.
-
 1. Clone the Repository
-git clone https://github.com/Lalit-Kumar-Yadav-DTU/skill-bridge-navigator
+Bash
+git clone [https://github.com/Lalit-Kumar-Yadav-DTU/skill-bridge-navigator](https://github.com/Lalit-Kumar-Yadav-DTU/skill-bridge-navigator)
 cd skill-bridge-navigator
-
-3. Backend Configuration
+2. Backend Configuration
+Bash
 cd server
 npm install
-cp .env.example .env  # IMPORTANT: Add your GEMINI_API_KEY to this file
+# Manual Step: Open .env and add your GEMINI_API_KEY
+cp .env.example .env  
 node index.js
-
-5. Frontend Configuration
+3. Frontend Configuration
+Bash
 cd ../client
 npm install
 npm run dev
-
-7. Running Automated Tests
-cd server
+4. Running Automated Tests
+Bash
+cd ../server
 npm test
