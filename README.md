@@ -1,173 +1,105 @@
-# retail_ordering_portal
-A MERN stack retail ordering app where users browse products, manage carts, and place orders with real-time inventory updates. Uses React, Tailwind CSS, and Redux on the frontend, with Node.js, Express, MongoDB, and JWT (HTTP-only cookies) for secure backend authentication.
+# 🚀 Skill-Bridge Career Navigator
+**Candidate:** Lalit Kumar Yadav (Delhi Technological University)  
+**Case Study:** Palo Alto Networks FY26 IT Hiring Challenge
 
-#Design Phase - The complete flow 
+---
 
+## 📸 Application Preview
+![App Screenshot](./screenshot.png)
 
-![complete_flow_chart](https://github.com/user-attachments/assets/a5dbf3e4-cf61-4d0a-859e-9acbc8b24686)
+---
 
-![class_diagram](https://github.com/user-attachments/assets/b610cce9-1789-4d11-a140-c15a6a665198)
+## 📺 Project Submission Links
+| Resource | Link |
+| :--- | :--- |
+| **Video Presentation** | [▶️ Watch the 5-7 Minute Demo on YouTube](PASTE_YOUR_YOUTUBE_LINK_HERE) |
+| **Design Documentation** | [📄 View Technical Design Documentation](./DESIGN.md) |
 
-Frontend Architecture
-Tech Stack
+---
 
-React.js – UI & component-based architecture
+## 📌 Project Overview
+> **The Problem:** Students and career-switchers often face a "Black Box" when applying for specialized roles. They may have the core skills but miss the specific "last-mile" technical requirements that lead to successful placements.
 
-Tailwind CSS – responsive styling
+**The Solution:** `Skill-Bridge` is an AI-powered navigator that performs a deep-tissue gap analysis on a user’s resume. By comparing real-world resume text against specific industry-standard job descriptions using **Gemini 2.5-Flash**, it generates a personalized, actionable roadmap to bridge those gaps.
 
-Redux – global state management
+---
 
-Axios – API communication
+## 🛠️ Technical Stack
+| Layer | Technologies |
+| :--- | :--- |
+| **Frontend** | React 18 (Vite), Axios, CSS3 (Modular & Responsive UI) |
+| **Backend** | Node.js, Express.js |
+| **AI Engine** | Google Gemini 2.5-Flash (via Google AI Studio) |
+| **Testing** | Jest, Supertest (Focusing on Edge Cases & Resilience) |
+| **Security** | Environment-based configuration (`dotenv`) |
 
-Frontend Responsibilities
+---
 
-Render UI (menu, cart, orders, admin panel)
+## 🧠 Core Engineering Pillars (Design Choices)
 
-Manage client-side routing
+### 1. High-Availability & Resilient Fallback
+In alignment with Palo Alto Networks' focus on **stable infrastructure**, I implemented a "Graceful Degradation" strategy:
+* **Primary Engine:** Real-time NLP analysis via Gemini 2.5-Flash for creative, context-aware roadmaps.
+* **Fallback Engine:** If the AI API experiences latency or failures, a server-side **Deterministic Keyword Matcher** automatically takes over. This ensures the user *always* receives a functional gap analysis.
 
-Store global state (auth, cart, user)
+### 2. Full-Stack CRUD Lifecycle
+I ensured the application satisfies the core requirements of a functional MVP:
+* **Create:** Generate new analysis reports from resume input.
+* **View:** Real-time rendering of Match Scores and Skill Gaps.
+* **Update:** An interactive **Roadmap Progress Tracker**. Users can "Check off" steps, which updates the application state—providing a tangible sense of progress.
+* **Filter:** A job library allows users to switch between different career paths instantly.
 
-Call backend APIs with credentials
+### 3. Technical Rigor & Quality Assurance
+The codebase is hardened with automated unit tests to ensure reliability:
+* **Happy Path:** Confirms successful score generation for valid data.
+* **Edge Case 1:** Validates 400-level error handling for empty/missing inputs.
+* **Edge Case 2:** Validates 404-level error handling for invalid Job IDs.
 
-Handle loading & error states
+---
 
-Frontend Structure (Recommended)
-src/
- ├── components/
- ├── pages/
- │    ├── Login.jsx
- │    ├── Menu.jsx
- │    ├── Cart.jsx
- │    ├── Orders.jsx
- │    └── AdminDashboard.jsx
- ├── redux/
- │    ├── authSlice.js
- │    ├── cartSlice.js
- │    └── productSlice.js
- ├── services/
- │    └── api.js
- └── App.js
+## ⚖️ Responsible AI & Security
+* **Data Privacy:** Resume data is processed as a transient stream. No personal user data is stored or used for model training, adhering to strict privacy-first principles.
+* **Transparency:** The UI explicitly labels when the analysis is generated via "AI Analysis" versus the "Fallback Engine," ensuring user trust.
+* **Security Hygiene:** Sensitive API credentials are never hardcoded; they are managed through `.env` files with a provided `.env.example` template for reviewers.
 
-Frontend → Backend Communication
+---
 
-Uses REST APIs
+## 📉 Engineering Tradeoffs
+* **Text-Paste vs. PDF Parsing:** I chose a text-input method to prioritize **Data Integrity**. PDF layouts often introduce parsing "noise" that can lead to AI hallucinations. Text-paste ensures the AI receives 100% clean data for the most accurate gap analysis.
+* **MERN-Lite Architecture:** I utilized a local `jobs.json` database instead of a full MongoDB deployment to maximize velocity and focus on **AI Resilience** and **Testing**, which were higher-weighted criteria for this specific case study.
 
-⚙️ Backend Architecture
-Tech Stack
+---
 
-Node.js
+## 🔮 Future Enhancements
+* **Persistence Layer:** Integrating a database to allow users to save multiple resumes and track progress over time.
+* **Live Job Scraping:** Connecting to LinkedIn or Glassdoor APIs for real-time job postings.
+* **Advanced AI Guardrails:** Implementing a secondary LLM "check" to further minimize hallucinations in technical roadmap steps.
 
-Express.js
+---
 
-JWT for authentication
+## 🚀 Getting Started
 
-bcrypt for password hashing
+### Prerequisites
+* **Node.js** v20.14.0 or higher.
+* **Gemini API Key** (Google AI Studio).
+🚀 Installation & Setup
+Follow these steps to get the Skill-Bridge Navigator running on your local machine.
 
-Mongoose for MongoDB interaction
+1. Clone the Repository
+git clone https://github.com/Lalit-Kumar-Yadav-DTU/skill-bridge-navigator
+cd skill-bridge-navigator
 
-Backend Responsibilities
+3. Backend Configuration
+cd server
+npm install
+cp .env.example .env  # IMPORTANT: Add your GEMINI_API_KEY to this file
+node index.js
 
-Authenticate users (JWT)
+5. Frontend Configuration
+cd ../client
+npm install
+npm run dev
 
-Authorize roles (Customer / Admin)
-
-Handle business logic (cart, orders, inventory)
-
-Expose REST APIs
-
-Validate requests & handle errors
-
-Backend Structure (Recommended)
-backend/
- ├── controllers/
- ├── routes/
- ├── models/
- ├── middleware/
- │    ├── authMiddleware.js
- │    └── adminMiddleware.js
- ├── config/
- └── server.js
-
-Security Design
-
-JWT stored in HTTP-only cookies
-
-Middleware-based route protection
-
-Role-based authorization
-
-Environment variables for secrets
-
-🗄️ Database Architecture (MongoDB)
-Database Type
-
-NoSQL (MongoDB)
-
-Core Collections
-
-users
-
-categories
-
-products
-
-inventory
-
-carts
-
-orders
-
-Relationships (Logical)
-
-User → Cart (1:1)
-
-User → Orders (1:N)
-
-Category → Products (1:N)
-
-Product → Inventory (1:1)
-
-Order → OrderItems (1:N)
-
-
-🔐 Authentication APIs
-POST   /api/auth/register     → Register a new user
-POST   /api/auth/login        → Login user and set JWT cookie
-POST   /api/auth/logout       → Logout user and clear cookie
-GET    /api/auth/me           → Get logged-in user details
-
-📋 Menu & Product APIs (Public)
-GET    /api/menu              → Get full menu (categories + products)
-GET    /api/categories        → Get all categories
-GET    /api/products          → Get products (filter by category)
-GET    /api/products/:id      → Get single product details
-
-🛒 Cart APIs (Authenticated User)
-GET    /api/cart              → Get user cart
-POST   /api/cart/add          → Add item to cart
-PUT    /api/cart/update       → Update cart item quantity
-DELETE /api/cart/remove/:id   → Remove item from cart
-DELETE /api/cart/clear        → Clear cart
-
-📦 Order APIs (Authenticated User)
-POST   /api/orders            → Place a new order
-GET    /api/orders/my         → Get logged-in user order history
-GET    /api/orders/:id        → Get order details
-
-🧑‍💼 Admin APIs (Admin Role Only)
-Product Management
-POST   /api/admin/products          → Add new product
-PUT    /api/admin/products/:id      → Update product
-DELETE /api/admin/products/:id      → Disable/Delete product
-
-Category Management
-POST   /api/admin/categories        → Add category
-PUT    /api/admin/categories/:id    → Update category
-
-Inventory Management
-GET    /api/admin/inventory         → View inventory
-PUT    /api/admin/inventory/:id     → Update inventory quantity
-
-Order Management
-GET    /api/admin/orders            → View all orders
-PUT    /api/admin/orders/:id        → Update order status
+7. Running Automated Tests
+cd server
+npm test
