@@ -91,17 +91,19 @@ When you bunch them together without line breaks, GitHub’s parser can get conf
 
 Here is the exact raw Markdown you should paste into your README.md:
 
-🚀 Installation & Setup
-1. Clone the Repository
-Bash
+## 🚀 Installation & Setup
+
+Follow these steps to get the **Skill-Bridge Navigator** running on your local machine.
+
+### **1. Clone the Repository**
+```bash
 git clone [https://github.com/Lalit-Kumar-Yadav-DTU/skill-bridge-navigator](https://github.com/Lalit-Kumar-Yadav-DTU/skill-bridge-navigator)
 cd skill-bridge-navigator
 2. Backend Configuration
 Bash
 cd server
 npm install
-# Manual Step: Open .env and add your GEMINI_API_KEY
-cp .env.example .env  
+cp .env.example .env  # Manual Step: Open .env and add your GEMINI_API_KEY
 node index.js
 3. Frontend Configuration
 Bash
@@ -110,5 +112,5 @@ npm install
 npm run dev
 4. Running Automated Tests
 Bash
-cd ../server
+cd server
 npm test
